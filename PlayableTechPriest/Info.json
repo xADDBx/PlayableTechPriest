@@ -1,0 +1,12 @@
+﻿{
+  "Id": "PlayableTechPriest",
+  "DisplayName": "Playable Tech Priest",
+  "Author": "ADDB",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.25.0",
+  "Requirements": [],
+  "AssemblyName": "PlayableTechPriest.dll",
+  "EntryMethod": "PlayableTechPriest.Main.Load",
+  "HomePage": "",
+  "Repository": ""
+}
