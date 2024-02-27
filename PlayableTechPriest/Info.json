@@ -7,6 +7,6 @@
   "Requirements": [],
   "AssemblyName": "PlayableTechPriest.dll",
   "EntryMethod": "PlayableTechPriest.Main.Load",
-  "HomePage": "",
-  "Repository": ""
+  "HomePage": "https://www.nexusmods.com/warhammer40kroguetrader/mods/108",
+  "Repository": "https://raw.githubusercontent.com/xADDBx/ReDress-WH40K-Rogue-Trader/master/Repository.json"
 }
