@@ -2,11 +2,11 @@
   "Id": "PlayableTechPriest",
   "DisplayName": "Playable Tech Priest",
   "Author": "ADDB",
-  "Version": "1.0.0",
+  "Version": "1.1.0",
   "ManagerVersion": "0.25.0",
   "Requirements": [],
   "AssemblyName": "PlayableTechPriest.dll",
   "EntryMethod": "PlayableTechPriest.Main.Load",
   "HomePage": "https://www.nexusmods.com/warhammer40kroguetrader/mods/108",
-  "Repository": "https://raw.githubusercontent.com/xADDBx/ReDress-WH40K-Rogue-Trader/master/Repository.json"
+  "Repository": "https://raw.githubusercontent.com/xADDBx/PlayableTechPriest/master/Repository.json"
 }

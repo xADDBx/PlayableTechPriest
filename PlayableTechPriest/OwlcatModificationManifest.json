@@ -1,12 +1,12 @@
 {
   "UniqueName": "PlayableTechPriest",
-  "Version": "1.0.0",
+  "Version": "1.1.0",
   "DisplayName": "Playable Tech Priest",
   "Description": "Playable Tech Priest",
   "Author": "ADDB",
   "ImageName": "Thumbnail.jpg",
   "WorkshopId": "3169165886",
-  "Repository": "https://raw.githubusercontent.com/xADDBx/ReDress-WH40K-Rogue-Trader/master/Repository.json",
+  "Repository": "https://raw.githubusercontent.com/xADDBx/PlayableTechPriest/master/Repository.json",
   "HomePage": "https://www.nexusmods.com/warhammer40kroguetrader/mods/108",
   "Dependencies": []
 }

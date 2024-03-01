@@ -176,41 +176,17 @@ public static class Main {
     [HarmonyPatch(typeof(DollData), nameof(DollData.CreateUnitView))]
     internal static class DollData_CreateUnitView_Patch {
         internal static AbstractUnitEntity context = null;
-        [HarmonyPrefix]
-        private static bool CreateUnitView(DollData __instance, ref UnitEntityView __result, bool savedEquipment) {
+        [HarmonyPostfix]
+        private static void CreateUnitView(DollData __instance, ref UnitEntityView __result, bool savedEquipment) {
             if (EntityPartStorage.perSave.AddClothes.TryGetValue(context.UniqueId, out var ees)) {
-                BlueprintCharGenRoot charGenRoot = BlueprintRoot.Instance.CharGenRoot;
-                Character character = ((__instance.Gender == Kingmaker.Blueprints.Base.Gender.Male) ? charGenRoot.MaleDoll : charGenRoot.FemaleDoll);
-                UnitEntityView component = character.GetComponent<UnitEntityView>();
-                if (component == null) {
-                    throw new Exception(string.Format("Could not create unit view by doll data: invalid prefab {0}", character));
-                }
-                UnitEntityView unitEntityView = UnityEngine.Object.Instantiate<UnitEntityView>(component);
-                Character component2 = unitEntityView.GetComponent<Character>();
-                if (component2 == null) {
-                    return unitEntityView;
-                }
-                component2.RemoveAllEquipmentEntities(savedEquipment);
-                if (__instance.RacePreset != null) {
-                    component2.Skeleton = ((__instance.Gender == Kingmaker.Blueprints.Base.Gender.Male) ? __instance.RacePreset.MaleSkeleton : __instance.RacePreset.FemaleSkeleton);
-                    component2.AddEquipmentEntities(__instance.RacePreset.Skin.Load(__instance.Gender, __instance.RacePreset.RaceId), savedEquipment);
-                }
-                foreach (string text in __instance.EquipmentEntityIds) {
-                    EquipmentEntity equipmentEntity = ResourcesLibrary.TryGetResource<EquipmentEntity>(text, false, false);
-                    component2.AddEquipmentEntity(equipmentEntity, savedEquipment);
-                }
+                Character component2 = __result.GetComponent<Character>();
                 foreach (var eeId in ees) {
                     var eel = new EquipmentEntityLink() { AssetId = eeId };
                     var ee = eel.Load();
-                    if (!component2.EquipmentEntities.Where(e => e.name == ee.name).Any()) {
-                        component2.AddEquipmentEntity(ee, savedEquipment);
-                    }
+                    component2.AddEquipmentEntity(ee, savedEquipment);
                 }
                 __instance.ApplyRampIndices(component2, savedEquipment);
-                __result = unitEntityView;
-                return false;
             }
-            return true;
         }
     }
     [HarmonyPatch(typeof(Game))]
